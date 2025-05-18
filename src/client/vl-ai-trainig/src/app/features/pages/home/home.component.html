@@ -1,0 +1,41 @@
+<section class="hero-section">
+  <h1 class="background-header">AI training platform</h1>
+    <!-- Particles container -->
+  <ng-container *ngIf="isBrowser">
+    <div class="particles-container">
+      <ngx-particles
+        id="tsparticles"
+        [options]="particlesOptions"
+        (particlesInit)="particlesInit($event)"
+      ></ngx-particles>
+    </div>
+  </ng-container>
+  
+  <div class="hero-content">
+    <h1>AI training platform</h1>
+    <p>Welcome to the internal AI Training Platform. Unlock new skills, explore curated materials, and connect with our AI community.</p>
+    <a routerLink="/materials" class="cta-btn">Explore Materials</a>
+  </div>
+</section>
+
+<section class="news-section">
+  <h2>Latest News</h2>
+  <div class="news-list">
+    <ng-container *ngIf="newsSnippets$ | async as newsSnippets">
+      <app-news-snippet-card *ngFor="let snippet of newsSnippets" [snippet]="snippet"></app-news-snippet-card>
+    </ng-container>
+  </div>
+</section>
+
+<section class="quick-links-section">
+  <h2>Quick Access</h2>
+  <div class="quick-links">
+    <a *ngFor="let link of quickLinks" [routerLink]="link.link" class="quick-link-card">
+      <span class="material-icons">{{ link.icon }}</span>
+      <div>
+        <h3>{{ link.label }}</h3>
+        <p>{{ link.description }}</p>
+      </div>
+    </a>
+  </div>
+</section>

@@ -1,0 +1,249 @@
+// filepath: c:\Projects\_VL\VL Copilot workshops\AI training platform\src\client\vl-ai-trainig\src\app\features\pages\home\home.component.scss
+.hero-section {
+  position: relative;  padding: 2rem 1rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-height: 300px; // Reduced by 40% from original 500px
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.2); // Very slight darkening to help particles stand out
+    .background-header {
+    position: absolute;
+    top: 50%;
+    left: 50%;    transform: translate(-50%, -50%);
+    font-size: 6rem; /* Keeping original font size as requested */
+    z-index: 3; /* Above particles (z-index 2) but below hero-content (z-index 4) */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    background: linear-gradient(90deg, #3BFFCB, #7F38FF);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+    filter: brightness(0.6); /* Darkened by 40% as requested */
+    text-shadow: 0 0 15px rgba(59, 255, 203, 0.4), 0 0 30px rgba(127, 56, 255, 0.3);
+    pointer-events: none;
+    letter-spacing: 2px;
+    animation: glow 3s infinite alternate;
+  }
+  
+  @keyframes glow {
+    from {
+      filter: brightness(0.6) drop-shadow(0 0 5px rgba(59, 255, 203, 0.3));
+    }
+    to {
+      filter: brightness(0.6) drop-shadow(0 0 15px rgba(127, 56, 255, 0.5));
+    }
+  }
+    .hero-content {
+    position: relative;
+    z-index: 4; /* Increase z-index to be above particles */
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    
+    h1 {
+      font-size: 2rem; /* Reduced from 2.5rem */
+      margin-bottom: 1rem; /* Reduced from 1.5rem */
+      font-weight: 700;
+    }
+    
+    p {
+      font-size: 1.1rem; /* Slightly reduced */
+      margin-bottom: 1.5rem; /* Reduced from 2rem */
+      line-height: 1.5; /* Slightly reduced */
+    }
+    
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #3BFFCB, #7F38FF);
+      color: #0A0A0A;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: none;
+      position: relative;
+      overflow: hidden;
+      
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(127, 56, 255, 0.3);
+      }
+    }
+  }
+  
+  .particles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; /* Increase z-index to be above background but below content */
+    filter: hue-rotate(180deg);
+    opacity: 1;
+    pointer-events: none; /* Allow clicks to pass through */
+    
+    ::ng-deep {
+      /* Directly target the canvas element */
+      canvas {
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+      }
+      
+      /* Make sure the container is visible */
+      #tsparticles {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+}
+
+.news-section, .quick-links-section {
+  padding: 3rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  
+  h2 {
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #3BFFCB, #7F38FF);
+      border-radius: 2px;
+    }
+  }
+}
+
+.news-section {
+  position: relative;
+  
+  // Add subtle aurora glow background
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, rgba(127, 56, 255, 0.03) 0%, rgba(10, 10, 10, 0) 70%),
+                radial-gradient(circle at bottom left, rgba(59, 255, 203, 0.03) 0%, rgba(10, 10, 10, 0) 70%);
+    z-index: -1;
+  }
+  
+  .news-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+}
+
+.quick-links-section {
+  background-color: rgba(10, 10, 10, 0.3);
+  border-radius: 16px;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  padding: 3rem 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  
+  .quick-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    
+    .quick-link-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.5rem;
+      border-radius: 12px;
+      background-color: rgba(20, 20, 20, 0.6);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(59, 255, 203, 0.1);
+        background-color: rgba(30, 30, 30, 0.8);
+      }
+      
+      .material-icons {
+        font-size: 2rem;
+        color: #3BFFCB;
+      }
+      
+      h3 {
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+      }
+      
+      p {
+        margin: 0;
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+// Media queries for responsiveness
+@media (max-width: 768px) {
+  .hero-section {
+    .background-header {
+      font-size: 4rem;
+    }
+    
+    .hero-content h1 {
+      font-size: 2rem;
+    }
+  }
+  
+  .quick-links-section .quick-links {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    .background-header {
+      font-size: 3rem;
+    }
+    
+    .hero-content h1 {
+      font-size: 1.8rem;
+    }
+  }
+  
+  .news-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .quick-links-section .quick-links {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,47 @@
+<div class="filter-panel">
+  <div class="filter-group">
+    <div class="filter-group-header">
+      <label>Tags</label>
+      <small *ngIf="selectedTags.length > 0">{{ selectedTags.length }} selected</small>
+    </div>
+    <div class="tags-container">
+      <mat-chip-set aria-label="Tag selection">
+        <mat-chip
+          *ngFor="let tag of tags"
+          [class.selected]="isTagSelected(tag)"
+          (click)="onTagToggle(tag)">
+          <span>{{ tag }}</span>
+          <mat-icon *ngIf="isTagSelected(tag)" matChipRemove (click)="$event.stopPropagation(); onTagToggle(tag)">cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-set>
+    </div>
+  </div>
+  
+  <div class="filter-group">
+    <mat-form-field appearance="outline" class="glass-input">
+      <mat-label>Type</mat-label>
+      <mat-select [(ngModel)]="selectedType" (ngModelChange)="typeChange.emit($event)">
+        <mat-option value="">All</mat-option>
+        <mat-option *ngFor="let type of types" [value]="type">{{ type }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  
+  <div class="filter-group">
+    <mat-form-field appearance="outline" class="glass-input">
+      <mat-label>Difficulty</mat-label>
+      <mat-select [(ngModel)]="selectedDifficulty" (ngModelChange)="difficultyChange.emit($event)">
+        <mat-option value="">All</mat-option>
+        <mat-option *ngFor="let diff of difficulties" [value]="diff">{{ diff }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  
+  <div class="filter-group">
+    <mat-form-field appearance="outline" class="glass-input">
+      <mat-label>Search</mat-label>
+      <input matInput [(ngModel)]="search" (ngModelChange)="searchChange.emit($event)" placeholder="Search materials...">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+</div>

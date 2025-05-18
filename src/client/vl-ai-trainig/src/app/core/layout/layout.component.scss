@@ -1,0 +1,55 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  padding: 8px 12px;
+  background-color: #3BFFCB; // primary color from theme
+  color: #0A0A0A; // dark-background from theme for contrast
+  font-weight: 500;
+  z-index: 1000;
+  text-decoration: none;
+  transition: top 0.2s ease;
+  border-radius: 0 0 8px 0; // iOS-style rounded corner
+
+  &:focus {
+    top: 0;
+  }
+}
+
+.main-content {
+  flex: 1;
+  padding: 5.5rem 0 1.5rem; /* Add top padding to account for fixed header */
+  background-color: #0A0A0A; // dark-background from theme
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  width: 100%;
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1A1A1A; // dark-surface from theme
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(127, 56, 255, 0.3); // Semi-transparent accent color
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 255, 203, 0.5); // Semi-transparent primary color
+}

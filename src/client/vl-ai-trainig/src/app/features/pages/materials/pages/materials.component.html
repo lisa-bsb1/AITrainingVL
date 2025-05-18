@@ -1,0 +1,28 @@
+<div class="materials-page">
+  <app-filter-panel
+    [tags]="(tags$ | async) ?? []"
+    [selectedTags]="selectedTags"
+    [types]="types"
+    [selectedType]="selectedType"
+    [difficulties]="difficulties"
+    [selectedDifficulty]="selectedDifficulty"
+    [search]="search"
+    (tagsChange)="onTagsChange($event)"
+    (typeChange)="onTypeChange($event)"
+    (difficultyChange)="onDifficultyChange($event)"
+    (searchChange)="onSearchChange($event)"
+  ></app-filter-panel>
+
+  <div class="materials-list">
+    <app-material-card *ngFor="let material of filteredMaterials$ | async" [material]="material"></app-material-card>
+    <div *ngIf="(filteredMaterials$ | async)?.length === 0" class="no-results">
+      No materials found.
+    </div>
+  </div>
+
+  <div class="pagination" *ngIf="totalPages > 1">
+    <button (click)="onPageChange(page - 1)" [disabled]="page === 1">Prev</button>
+    <span>Page {{ page }} of {{ totalPages }}</span>
+    <button (click)="onPageChange(page + 1)" [disabled]="page === totalPages">Next</button>
+  </div>
+</div>
