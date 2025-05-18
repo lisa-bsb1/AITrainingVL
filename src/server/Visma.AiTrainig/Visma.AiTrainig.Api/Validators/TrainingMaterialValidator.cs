@@ -1,6 +1,7 @@
 using FluentValidation;
+using Visma.AiTrainig.Api.Models;
 
-namespace Visma.AiTrainig.Api.Data
+namespace Visma.AiTrainig.Api.Validators
 {
     /// <summary>
     /// Validator for the TrainingMaterial entity

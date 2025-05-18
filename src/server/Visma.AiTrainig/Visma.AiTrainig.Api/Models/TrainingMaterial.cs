@@ -1,4 +1,4 @@
-namespace Visma.AiTrainig.Api.Data
+namespace Visma.AiTrainig.Api.Models
 {
     /// <summary>
     /// Represents a training material in the system

@@ -1,11 +1,11 @@
 @Visma.AiTrainig.Api_HostAddress = http://localhost:5124
 
-GET {{Visma.AiTrainig.Api_HostAddress}}/todos/
+GET {{Visma.AiTrainig.Api_HostAddress}}/api/materials/
 Accept: application/json
 
 ###
 
-GET {{Visma.AiTrainig.Api_HostAddress}}/todos/1
+GET {{Visma.AiTrainig.Api_HostAddress}}/api/materials/1
 Accept: application/json
 
 ###
