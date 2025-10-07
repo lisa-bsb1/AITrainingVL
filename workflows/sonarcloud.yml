@@ -1,0 +1,29 @@
+name: SonarQube Analysis
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  sonarcloud-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Required to get the full git history for CodeScene-like analysis
+      - name: Set up SonarQube
+        uses: SonarSource/sonarqube-scan-action@master
+        with:
+          # The project key you created in SonarQube
+          project-key: 'ai-project-debt-key' 
+          # The host URL is pulled from the GitHub Secret
+          host-url: ${{ secrets.SONAR_HOST_URL }}
+          # The token is pulled from the GitHub Secret
+          token: ${{ secrets.SONAR_TOKEN }}
+      - name: Run SonarQube Analysis
+        run: >
+          sonar-scanner
+          -Dsonar.projectKey=${{ secrets.SONAR_TOKEN }}
+          -Dsonar.sources=.
+          -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}
